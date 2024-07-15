@@ -1,0 +1,17 @@
+<h2>Modifier TVA</h2>
+<form (ngSubmit)="updateTva()">
+    <div class="mb-3">
+        <label for="service" class="form-label">Service:</label>
+        <input id="service" [(ngModel)]="tva.service" name="nom" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="valeur" class="form-label">Valeur:</label>
+        <input id="valeur" [(ngModel)]="tva.valeur" name="prenom" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Modifier TVA</button>
+</form>
+<button type="button" class="btn btn-secondary mt-3" routerLink="/tva">
+    Retour à la liste des TVAS
+</button>
+<p *ngIf="message" class="mt-3 alert alert-info">{{ message }}</p>

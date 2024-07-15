@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des Villes</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddVille()">Ajouter Ville</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Libelle</th>
+
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ville of villes">
+                <td>{{ ville.libelle }}</td>
+
+
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editVille(ville)">Modifier</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteVille(ville)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

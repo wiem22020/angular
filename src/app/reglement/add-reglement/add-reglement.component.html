@@ -1,0 +1,56 @@
+<h2>Ajouter Reglement</h2>
+<form #reglementForm="ngForm" (ngSubmit)="addReglement(reglementForm)" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="code" class="form-label">Code Reglement:</label>
+        <input type="text" style="width: 200px;" class="form-control" id="code" [(ngModel)]="reglement.codeReg" name="code" required readonly>
+        <div class="invalid-feedback">
+            Please enter a code.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Date Reglement:</label>
+        <input type="date" class="form-control" id="date" [(ngModel)]="reglement.dateReg" name="date" required style="width: 200px;">
+        <div class="invalid-feedback">
+            Please enter a date.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="montant" class="form-label">Montant:</label>
+        <input type="text" style="width: 200px;" class="form-control" id="montant" [(ngModel)]="reglement.montant" name="montant" required >
+        <div class="invalid-feedback">
+            Please enter a montant.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Modalite:</label>
+        <div class="d-flex align-items-center">
+            <div class="form-check me-3" *ngFor="let method of ['espece', 'cheque', 'carte bancaire', 'virement']">
+                <input class="form-check-input" type="radio" name="modalite" [(ngModel)]="reglement.modalite" [value]="method" required>
+                <label class="form-check-label" for="modalite">{{ method }}</label>
+            </div>
+        </div>
+        <div class="invalid-feedback">
+            Please select a modalite.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="factureId" class="form-label">Client:</label>
+        <div class="d-flex align-items-center">
+            <select class="form-select me-2" aria-label="Default select example" id="factureId" [(ngModel)]="reglement.facture_id" name="factureId" required style="width: 200px;">
+                <option selected disabled>Select a facture</option>
+                <option *ngFor="let facture of factures" [value]="facture.id">{{ facture.id }}</option>
+            </select>
+            <button type="button" class="btn btn-primary" routerLink="/add-facture">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+        <div class="invalid-feedback">
+            Please select a facture.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+<button type="button" class="btn btn-secondary mt-3" routerLink="list-reglement">
+    Retour à la liste des reglements
+</button>

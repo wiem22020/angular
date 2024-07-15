@@ -1,0 +1,43 @@
+<h2>Ajouter Client</h2>
+<form  #clientForm="ngForm" (ngSubmit)="addClient(clientForm)" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="nom" class="form-label">Nom:</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="client.nom" name="nom" required>
+        <div class="invalid-feedback">
+            Please enter a name.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="prenom" class="form-label">Prenom:</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="client.prenom" name="prenom" required>
+        <div class="invalid-feedback">
+            Please enter a last name.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="adresse" class="form-label">Adresse:</label>
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="client.adresse" name="adresse" required>
+        <div class="invalid-feedback">
+            Please enter an address.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone:</label>
+        <input type="tel" class="form-control" id="phone" [(ngModel)]="client.phone" name="phone" required>
+        <div class="invalid-feedback">
+            Please enter a valid phone number.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="MF" class="form-label">MF:</label>
+        <input type="text" class="form-control" id="MF" [(ngModel)]="client.MF" name="MF" required>
+        <div class="invalid-feedback">
+            Please enter a MF number.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Client</button>
+</form>
+<button type="button" class="btn btn-secondary mt-3" routerLink="/clients">
+    Retour à la liste des clients
+</button>
+<p *ngIf="message" class="mt-3">{{ message }}</p>

@@ -1,0 +1,28 @@
+<h2>Modifier Article</h2>
+<form (ngSubmit)="updateArticle()">
+    <div class="mb-3">
+        <label for="nom" class="form-label">Nom:</label>
+        <input id="nom" [(ngModel)]="article.nom" name="nom" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="prenom" class="form-label">Prenom:</label>
+        <input id="prenom" [(ngModel)]="article.prenom" name="prenom" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="adresse" class="form-label">Adresse:</label>
+        <input id="adresse" [(ngModel)]="article.adresse" name="adresse" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone:</label>
+        <input id="phone" [(ngModel)]="article.phone" name="phone" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="MF" class="form-label">MF:</label>
+        <input id="MF" [(ngModel)]="article.MF" name="MF" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Article</button>
+</form>
+<button type="button" class="btn btn-secondary mt-3" routerLink="/articles">
+    Retour à la liste des articles
+</button>
+<p *ngIf="message" class="mt-3 alert alert-info">{{ message }}</p>

@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des TVAS</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddTva()">Ajouter Tva</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Valeur</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tva of tvas">
+                <td>{{ tva.service }}</td>
+                <td>{{ tva.valeur }}</td>
+
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editTva(tva)">Modifier</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteTva(tva)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

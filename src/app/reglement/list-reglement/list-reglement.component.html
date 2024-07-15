@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des Reglements</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddReglement()">Ajouter Reglement</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Code Reglement</th>
+                <th>Date Reglement</th>
+                <th>Montant</th>
+                <th>Modalite</th>
+                <th>Facture</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reglement of reglements">
+                <td>{{ reglement.codeReg }}</td>
+                <td>{{ reglement.dateReg }}</td>
+                <td>{{ reglement.montant }}</td>
+                <td>{{ reglement.modalite }}</td>
+                <td>{{ reglement.facture_id }}</td>
+
+                <td>
+                    
+                    <button class="btn btn-danger btn-sm" (click)="deleteReglement(reglement)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

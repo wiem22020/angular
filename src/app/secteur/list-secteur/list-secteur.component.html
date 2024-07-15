@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des Secteurs</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddSecteur()">Ajouter Secteur</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Libelle</th>
+
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let secteur of secteurs">
+                <td>{{ secteur.libelle }}</td>
+
+
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editSecteur(secteur)">Modifier</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteSecteur(secteur)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

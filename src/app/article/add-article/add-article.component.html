@@ -1,0 +1,46 @@
+<h2>Ajouter Article</h2>
+<form #articleForm="ngForm" (ngSubmit)="addArticle(articleForm)" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="nom" class="form-label">Code Article:</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="article.codeArt" name="nom" required>
+        <div class="invalid-feedback">
+            Please enter a name.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="prenom" class="form-label">Description Article:</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="article.descriptionArt" name="prenom" required>
+        <div class="invalid-feedback">
+            Please enter a last name.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="prixUnitaireHT" class="form-label">Prix Unitaire HT Article:</label>
+        <input type="text" class="form-control" id="prixUnitaireHT" [(ngModel)]="article.prixUnitaireHT"
+            name="prixUnitaireHT" required (input)="calculatePrixUnitaireTTC()">
+        <div class="invalid-feedback">
+            Please enter an address.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="tvaArt" class="form-label">Taux TVA Article:</label>
+        <input type="tel" class="form-control" id="tvaArt" [(ngModel)]="article.tvaArt" name="tvaArt" required
+            (input)="calculatePrixUnitaireTTC()">
+        <div class="invalid-feedback">
+            Please enter a valid tvaArt number.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="MF" class="form-label">Prix Unitaire TTC Article:</label>
+        <input type="text" class="form-control" id="MF" [(ngModel)]="article.prixUnitaireTTC" name="MF" required
+            readonly>
+        <div class="invalid-feedback">
+            Please enter a MF number.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Article</button>
+</form>
+<button type="button" class="btn btn-secondary mt-3" routerLink="/list-article">
+    Retour à la liste des articles
+</button>
+<p *ngIf="message" class="mt-3">{{ message }}</p>

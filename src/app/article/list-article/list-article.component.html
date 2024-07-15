@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des Articles</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddArticle()">Ajouter Article</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Code Article</th>
+                <th>Description Article</th>
+                <th>Prix Unitaire HT Article</th>
+                <th>Taux TVA Article</th>
+                <th>Prix Unitaire TTC Article</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of articles">
+                <td>{{ article.codeArt }}</td>
+                <td>{{ article.descriptionArt }}</td>
+                <td>{{ article.prixUnitaireHT }}</td>
+                <td>{{ article.tvaArt }}</td>
+                <td>{{ article.prixUnitaireTTC }}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editArticle(article)">Modifier</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteArticle(article)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h2>Liste des Factures</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="navigateToAddFacture()">Ajouter Facture</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Code Facture</th>
+                <th>Date Facture</th>
+                <th>Client</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let facture of factures">
+                <td>{{ facture.code }}</td>
+                <td>{{ facture.date }}</td>
+                <td>{{ facture.client_id }}</td>
+
+                <td>
+                    
+                    <button class="btn btn-danger btn-sm" (click)="deleteFacture(facture)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

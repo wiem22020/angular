@@ -1,0 +1,81 @@
+<h2>Ajouter Facture</h2>
+<form #factureForm="ngForm" (ngSubmit)="addFacture(factureForm)" class="needs-validation" novalidate>
+    <div class="mb-3 ">
+        <label for="code" class="form-label">Code Facture:</label>
+        <input type="text" style="width: 200px;" class="form-control " id="code" [(ngModel)]="facture.code" name="code" required
+            readonly>
+        <div class="invalid-feedback">
+            Please enter a code.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Date Facture:</label>
+        <input type="date" class="form-control" id="date" [(ngModel)]="facture.date" name="date" required style="width: 200px;">
+        <div class="invalid-feedback">
+            Please enter a date.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="clientId" class="form-label">Client:</label>
+        <div class="d-flex align-items-center">
+            <select class="form-select me-2" aria-label="Default select example" id="clientId"
+                [(ngModel)]="facture.client_id" name="clientId" required style="width: 200px;">
+                <option selected disabled>Select a client</option>
+                <option *ngFor="let client of clients" [value]="client.id">{{ client.nom }}</option>
+            </select>
+            <button type="button" class="btn btn-primary" routerLink="/add-client">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+        <div class="invalid-feedback">
+            Please select a client.
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="articleId" class="form-label">Article:</label>
+        <div class="d-flex align-items-center">
+            <select class="form-select me-2" aria-label="Default select example" id="article_id"
+                [(ngModel)]="ligneFacture.article_id" name="article_id" required style="width: 200px;">
+                <option selected disabled>Select an article</option>
+                <option *ngFor="let article of articles" [value]="article.id">{{ article.descriptionArt }}</option>
+            </select>
+            <input type="number" class="form-control me-2" id="quantity" [(ngModel)]="ligneFacture.quantity"
+                name="quantity" placeholder="Quantite" required min="1" style="width: 100px;">
+            <button type="button" class="btn btn-primary" (click)="addLigneFacture()">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Code Article</th>
+                    <th>Designation Article</th>
+                    <th>Prix Unitaire HT Article</th>
+                    <th>Taux TVA Article</th>
+                    <th>Quantite</th>
+                    <th>Totale HT</th>
+                    <th>Totale TTC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ligneFacture of ligneFactures">
+                    <td>{{ ligneFacture.code_article }}</td>
+                    <td>{{ ligneFacture.descriptionArt }}</td>
+                    <td>{{ ligneFacture.prix_unitaire }}</td>
+                    <td>{{ ligneFacture.tva }}</td>
+                    <td>{{ ligneFacture.quantity }}</td>
+                    <td>{{ ligneFacture.total_ht }}</td>
+                    <td>{{ ligneFacture.total_ttc }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
